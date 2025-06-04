@@ -1,0 +1,22 @@
+
+public class pangram {
+    public boolean checkIfPangram(String sentence) {
+        int[] count = new int[26];
+        
+        for (int i = 0; i < sentence.length(); i++) {
+            char c = sentence.charAt(i);
+            if (c >= 'a' && c <= 'z') {   // Make sure to count only lowercase letters
+                count[c - 'a']++;
+            } else if (c >= 'A' && c <= 'Z') {
+                count[c - 'A']++;          // Optionally handle uppercase letters as well
+            }
+        }
+        
+        for (int i = 0; i < 26; i++) {
+            if (count[i] < 1) {
+                return false;   // Missing at least one letter
+            }
+        }
+        return true;  // All letters are present
+    }
+}
